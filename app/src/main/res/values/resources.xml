@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //resource for hair options for spinner
+    <string-array name="hair" >
+        <item>Short</item>
+        <item>Medium</item>
+        <item>Long</item>
+    </string-array>
+
+    <string name="r">Red</string>
+    <string name="b">Blue</string>
+    <string name="g">Green</string>
+    <string name="h">Hair</string>
+    <string name="e">Eyes</string>
+    <string name="s">Skin</string>
+    <string name="random">Random Face</string>
+    <string name="hairChoose">Choose Hair Style: </string>
+
+</resources>
