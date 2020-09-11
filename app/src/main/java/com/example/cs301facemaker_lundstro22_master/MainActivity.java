@@ -1,3 +1,7 @@
+/*
+* @author Malia Lundstrom
+*  main activity to run app
+ */
 package com.example.cs301facemaker_lundstro22_master;
 
 import androidx.appcompat.app.AppCompatActivity;

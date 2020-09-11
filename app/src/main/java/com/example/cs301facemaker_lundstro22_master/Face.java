@@ -1,3 +1,8 @@
+/*
+* @author Malia Lundstrom
+* face class to store face information
+*
+ */
 package com.example.cs301facemaker_lundstro22_master;
 
 import java.util.Random;
