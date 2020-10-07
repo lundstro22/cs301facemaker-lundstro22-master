@@ -10,29 +10,24 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
-import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+
 
 import androidx.annotation.RequiresApi;
 
 import java.util.Random;
 
-public class Face extends SurfaceView implements Spinner.OnItemSelectedListener, View.OnClickListener{
+public class Face extends SurfaceView implements Spinner.OnItemSelectedListener, View.OnClickListener, SeekBar.OnSeekBarChangeListener{
     //declare variables
-    private int skinColorR,skinColorG, skinColorB;
-    private int eyeColorR, eyeColorG, eyeColorB;
-    private int hairColorR, hairColorG, hairColorB;
+    public int skinColorR,skinColorG, skinColorB;
+    public int eyeColorR, eyeColorG, eyeColorB;
+    public int hairColorR, hairColorG, hairColorB;
     private int hairStyle;
-    private String r= "red";
-    private String b= "blue";
-    private String g= "green";
     int xCanvas;
     int yCanvas;
     private Paint skinPaint= new Paint();
@@ -40,12 +35,9 @@ public class Face extends SurfaceView implements Spinner.OnItemSelectedListener,
     private Paint hairPaint= new Paint();
     private Paint background= new Paint();
     private int hairChoice=3;
-    private int red=0;
-    private int green=0;
-    private int blue=0;
-    private SeekBar seekRed= findViewById(R.id.Red);
-    private SeekBar seekGreen= findViewById(R.id.Green);
-    private SeekBar seekBlue= findViewById(R.id.Blue);
+    private int doIt;
+
+
 
 
 
@@ -137,27 +129,74 @@ public class Face extends SurfaceView implements Spinner.OnItemSelectedListener,
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.hairButton){
-            seekRed.setProgress(hairColorR);
-            seekGreen.setProgress(hairColorG);
-            seekBlue.setProgress(hairColorB);
-
-
-        }else if(v.getId() == R.id.eyeButton){
-            seekRed.setProgress(eyeColorR);
-            seekGreen.setProgress(eyeColorG);
-            seekBlue.setProgress(eyeColorB);
-
-        }else if(v.getId() == R.id.skinButton) {
-            seekRed.setProgress(skinColorR);
-            seekGreen.setProgress(skinColorG);
-            seekBlue.setProgress(skinColorB);
-        }if(v.getId() == R.id.randomFace){
+        if(v.getId() == R.id.randomFace){
             Random rand= new Random();
             hairChoice= rand.nextInt(2);
+            this.randomize();
+            skinPaint.setARGB(255,skinColorR,skinColorG,skinColorB);
+            eyePaint.setARGB(255, eyeColorR, eyeColorG, eyeColorB);
+            hairPaint.setARGB(255,hairColorR,hairColorG,hairColorB);
             this.invalidate();
+        }
+        if(v.getId()==R.id.hairButton){ doIt=1; }
+        if(v.getId() == R.id.eyeButton){ doIt=2; }
+        if(v.getId() == R.id.skinButton) { doIt=3; }
+
+
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if(doIt==1) {
+            if (seekBar.getId() == R.id.Red) {
+                hairColorR= progress;
+                this.invalidate();
+            }
+            if (seekBar.getId() == R.id.Green) {
+                hairColorG= progress;
+                this.invalidate();
+            }
+            if (seekBar.getId() == R.id.Blue) {
+                hairColorB= progress;
+                this.invalidate();
+            }
+        }if(doIt==2) {
+            if (seekBar.getId() == R.id.Red) {
+                eyeColorR= progress;
+                this.invalidate();
+            }
+            if (seekBar.getId() == R.id.Green) {
+                eyeColorG= progress;
+                this.invalidate();
+            }
+            if (seekBar.getId() == R.id.Blue) {
+                eyeColorB= progress;
+                this.invalidate();
+            }
+        }if(doIt==3) {
+                if (seekBar.getId() == R.id.Red) {
+                    skinColorR= progress;
+                    this.invalidate();
+                }
+                if (seekBar.getId() == R.id.Green) {
+                    skinColorG= progress;
+                    this.invalidate();
+                }
+                if (seekBar.getId() == R.id.Blue) {
+                    skinColorB= progress;
+                    this.invalidate();
+                }
         }
 
     }
 
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
 }
