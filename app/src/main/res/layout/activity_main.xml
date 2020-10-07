@@ -14,46 +14,68 @@
         Resource: Professor Nuxoll on Teams
         Solution: Changed SurfaceView layout to 500dp instead of match_parent
     -->
-    <SurfaceView
-        android:id="@+id/surfaceView"
-        android:layout_width="match_parent"
-        android:layout_height="500dp" />
 
-    <TextView
-        android:id="@+id/blueText"
+    <com.example.cs301facemaker_lundstro22_master.Face
+        android:id="@+id/faceView"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@android:color/background_light" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/b" />
+        android:orientation="horizontal">
 
-    <SeekBar
-        android:id="@+id/Red"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="255" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <SeekBar
-        android:id="@+id/Green"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="255" />
+            <TextView
+                android:id="@+id/redText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/r" />
 
-    <SeekBar
-        android:id="@+id/Blue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="255" />
+            <TextView
+                android:id="@+id/greenText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/g" />
 
-    <TextView
-        android:id="@+id/greenText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/g" />
+            <TextView
+                android:id="@+id/blueText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/b" />
 
-    <TextView
-        android:id="@+id/redText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/r" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <SeekBar
+                android:id="@+id/Red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255" />
+
+            <SeekBar
+                android:id="@+id/Green"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255" />
+
+            <SeekBar
+                android:id="@+id/Blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -101,6 +123,7 @@
                 android:text="@string/hairChoose" />
 
             <Spinner
+                android:id="@+id/hairSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/hair"
